@@ -1,9 +1,9 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
 *$py.class
+
+.DS_Store
 
 # C extensions
 *.so
@@ -207,24 +207,3 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
-=======
-=======
->>>>>>> b2268cb (fine tuning notebooks added)
-# Python-generated files
-__pycache__/
-*.py[oc]
-build/
-dist/
-wheels/
-*.egg-info
-
-# Virtual environments
-.venv
-*.env
-
-*Copia_di_orpo_finetuning_example.ipynb
-*instruction_sft_dataset.ipynb
-<<<<<<< HEAD
->>>>>>> b2268cb (fine tuning notebooks added)
-=======
->>>>>>> b2268cb (fine tuning notebooks added)
