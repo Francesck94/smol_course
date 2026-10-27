@@ -1,3 +1,5 @@
+instruction_tuning/finetuning_qwen/download_sft_results.ipynb
+instruction_tuning/finetuning_qwen/sft_results/*
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
