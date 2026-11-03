@@ -1,8 +1,8 @@
-instruction_tuning/finetuning_qwen/download_sft_results.ipynb
-instruction_tuning/finetuning_qwen/sft_results/*
+instruction-tuning/finetuning_qwen/download-sft-results.ipynb
+instruction-tuning/finetuning_qwen/sft_results/*
 
 # Generated datasets and training/eval outputs
-sft_data_creation/sft_data/
+sft-data-creation/sft_data/
 gemma_data/
 outputs/
 results/
