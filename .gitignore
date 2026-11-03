@@ -1,5 +1,18 @@
 instruction_tuning/finetuning_qwen/download_sft_results.ipynb
 instruction_tuning/finetuning_qwen/sft_results/*
+
+# Generated datasets and training/eval outputs
+sft_data_creation/sft_data/
+gemma_data/
+outputs/
+results/
+eval_results/
+lora_model/
+
+# Kaggle staging/output dirs (see kaggle-run-and-download.md)
+kpull/
+out/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
