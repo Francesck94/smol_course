@@ -12,6 +12,27 @@ export KAGGLE_API_TOKEN=$(cat ~/.kaggle/access_token)
 K=./.venv/bin/kaggle
 ```
 
+### Corporate TLS proxy (SSLCertVerificationError)
+
+This machine sits behind a TLS-intercepting proxy ("SSL Decrypt Certificate Trust"). The venv's certifi bundle doesn't trust it, and Python 3.13's strict X.509 mode rejects the chain ("Missing Authority Key Identifier"). One-time setup:
+
+```bash
+# export proxy root from the macOS keychain and append to a certifi bundle
+security find-certificate -c "SSL Decrypt Certificate Trust" -p /Library/Keychains/System.keychain > /tmp/corp-root.pem
+cat $(./.venv/bin/python -c "import certifi; print(certifi.where())") /tmp/corp-root.pem > /tmp/combined-ca-bundle.pem
+
+# relax VERIFY_X509_STRICT for urllib3 (verification stays ON)
+mkdir -p /tmp/kaggle-ssl   # see repo memory or history for sitecustomize.py contents
+```
+
+Then prefix every `kaggle` call with:
+
+```bash
+export REQUESTS_CA_BUNDLE=/tmp/combined-ca-bundle.pem
+export SSL_CERT_FILE=/tmp/combined-ca-bundle.pem
+export PYTHONPATH=/tmp/kaggle-ssl
+```
+
 ## Push the notebook and run it
 
 1. Make a staging folder and copy the notebook plus a `kernel-metadata.json`:
