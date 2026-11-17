@@ -22,9 +22,17 @@ This experimental reasoning model is fine-tuned from
 It was produced by [`qwen-grpo-v2-only-math.ipynb`](./qwen-grpo-v2-only-math.ipynb)
 using format-priming supervised fine-tuning followed by GRPO on math prompts.
 
+<<<<<<< HEAD
 The notebook saves merged 16-bit weights locally to `qwen_grpo_16bit/`. Its
 Hub-upload commands are disabled placeholders; this card describes the saved
 artifact and does not imply a particular Hub repository hosts it.
+=======
+The notebook saves merged 16-bit weights locally to `qwen_grpo_16bit/`. The
+published model is available on the Hugging Face Hub as
+[`FrancescoArno94/Qwen3-1.7B-GRPO-16bit-DAPO-math`](https://huggingface.co/FrancescoArno94/Qwen3-1.7B-GRPO-16bit-DAPO-math),
+with a [GGUF version](https://huggingface.co/FrancescoArno94/Qwen3-1.7B-GRPO-16bit-DAPO-math-gguf)
+for llama.cpp.
+>>>>>>> 65e1ecd (ordering notebooks)
 
 ## Intended use
 

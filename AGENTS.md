@@ -4,7 +4,7 @@ Personal working copy of exercises from the Hugging Face [smol-course](https://g
 
 ## Environment
 
-- `pyproject.toml` declares only `kaggle>=1.7.4.5` (for the CLI runbook in `kaggle-run-and-download.md`). Real ML deps live in `.venv/` (uv-created, CPython 3.13) and in `!pip`/`!uv pip` cells inside the notebooks. `uv.lock` exists and is tracked; do not "fix" pyproject by guessing pins.
+- `pyproject.toml` declares only `kaggle>=1.7.4.5` (for the CLI runbook in `docs/kaggle-run-and-download.md`). Real ML deps live in `.venv/` (uv-created, CPython 3.13) and in `!pip`/`!uv pip` cells inside the notebooks. `uv.lock` exists and is tracked; do not "fix" pyproject by guessing pins.
 - Installed in `.venv`: torch 2.10, transformers 4.57, trl 0.24, datasets 4.3, peft, unsloth, bitsandbytes, ipykernel. Use `.venv/bin/python` rather than creating a new env.
 - Local machine is macOS/Apple Silicon. Most notebooks are written for **CUDA + Unsloth** (Colab/Kaggle: `torch.cuda.get_device_properties(0)`, `.to("cuda")`, `kaggle_secrets`). They will not run locally as-is. Only `preference-alignment/orpo-finetuning-example.ipynb` has a cuda/mps/cpu fallback.
 - Secrets come from notebook-host secret stores (`user_secrets.get_secret("HF_TOKEN")`, `"wandb-key"`) or `os.getenv("HF_TOKEN")`. Never hardcode tokens; several cells still contain `"YOUR_HF_TOKEN"` placeholders on purpose.
@@ -13,10 +13,10 @@ Personal working copy of exercises from the Hugging Face [smol-course](https://g
 
 Folders and notebooks are kebab-case; `finetuning_qwen/` and `finetuning_gemma/` subfolders keep snake_case.
 
-- `instruction-tuning/` — SFT work: `sft-notebook.ipynb` (SmolLM3-3B, pushes to `FrancescoArno94/SmolLM3-3B-math`), `finetuning_qwen/` (Qwen3-1.7B-Base), `finetuning_gemma/` (gemma-4-E2B), `lighteval-colab.ipynb` (LightEval + vLLM eval of the pushed model), `setup-sft.ipynb` (chat-template basics), `benchmark-sft-model.ipynb`.
+- `instruction-tuning/` — SFT work: `smol_course_notebook/` contains the SmolLM3-3B notebook (pushes to `FrancescoArno94/SmolLM3-3B-math`), LightEval notebook, and chat-template basics. `finetuning_qwen/` contains Qwen3-1.7B SFT notebooks, a benchmark notebook, and `model-card.md`; `finetuning_gemma/` contains Gemma SFT.
 - `sft-data-creation/` — dataset building; `create-dataset.ipynb` writes `sft_data/` (HF `save_to_disk` arrow output, gitignored) and `../gemma_data/gemma_sft_dataset`. `instruction-sft-dataset.ipynb` uses distilabel.
-- `preference-alignment/` — `orpo-finetuning-example.ipynb` (ORPO on SmolLM2-135M), `qwen-dpo-fine-tune.ipynb` (DPO on the SFT'd Qwen3-1.7B).
-- `reasoning-training/` — GRPO on Qwen3: `qwen-grpo.ipynb`, `qwen-grpo-v2.ipynb`, `benchmark-grpo-model.ipynb`.
+- `preference-alignment/` — `orpo-finetuning-example.ipynb` (ORPO on SmolLM2-135M), `qwen-3-1.7b-dpo-fine-tune.ipynb` (DPO on the SFT'd Qwen3-1.7B), DPO benchmark, and `model-card.md`.
+- `reasoning-training/` — GRPO on Qwen3: `qwen-grpo.ipynb`, `qwen-grpo-v2.ipynb`, math-only v2/v3 notebooks, `benchmark-grpo-model.ipynb`, and training/model-card summaries.
 - `download-sft-results.ipynb` (in `instruction-tuning/finetuning_qwen/`) is gitignored — local Kaggle-results puller, not in the repo.
 
 ## Gotchas
