@@ -8,6 +8,7 @@ outputs/
 results/
 eval_results/
 lora_model/
+docs/post.md
 
 # Kaggle staging/output dirs (see kaggle-run-and-download.md)
 kpull/
