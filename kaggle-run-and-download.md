@@ -22,7 +22,19 @@ security find-certificate -c "SSL Decrypt Certificate Trust" -p /Library/Keychai
 cat $(./.venv/bin/python -c "import certifi; print(certifi.where())") /tmp/corp-root.pem > /tmp/combined-ca-bundle.pem
 
 # relax VERIFY_X509_STRICT for urllib3 (verification stays ON)
-mkdir -p /tmp/kaggle-ssl   # see repo memory or history for sitecustomize.py contents
+mkdir -p /tmp/kaggle-ssl
+cat > /tmp/kaggle-ssl/sitecustomize.py <<'EOF'
+import ssl
+
+_orig_create_default_context = ssl.create_default_context
+
+def _create_default_context_no_strict(*args, **kwargs):
+    ctx = _orig_create_default_context(*args, **kwargs)
+    ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
+    return ctx
+
+ssl.create_default_context = _create_default_context_no_strict
+EOF
 ```
 
 Then prefix every `kaggle` call with:
